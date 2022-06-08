@@ -14,7 +14,7 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/api/user/register")
+    @PostMapping("user/api/user")
     public Long register(@RequestBody UserRegisterDto userRegisterDto){
         return userService.register(userRegisterDto.toEntity());
     }
