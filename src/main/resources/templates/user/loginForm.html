@@ -8,20 +8,27 @@
 
 <main class="form-signin">
     <div class="container border rounded flex-md-row mb-4 shadow-sm h-md-250">
-        <form>
+        <form action="/user/login" method="post">
             <h1 class="h3 m-3 fw-normal">로그인</h1>
 
             <div class="form-floating m-3">
-                <input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요." required="required">
+                <input type="text" class="form-control" name="email" id="email" placeholder="이메일을 입력하세요." required="required">
                 <label for="email">이메일</label>
             </div>
             <div class="form-floating m-3">
-                <input type="password" class="form-control" id="password" placeholder="패스워드를 입력하세요." required="required">
+                <input type="password" class="form-control" name="password" id="password" placeholder="패스워드를 입력하세요." required="required">
                 <label for="password">패스워드</label>
             </div>
+            <div class="invalid-feedback">
+                이메일 형식으로 입력해야 합니다.
+            </div>
+            <div th:if="${param.error}"  style="color:red">
+                이메일 혹은 비밀번호를 학인해주세요!
+            </div></br>
+            <button class="btn btn-success" id="btn-login">로그인</button>
+            <a class="btn btn-success" href="/user/register">회원가입</a>
         </form>
-        <button class="btn btn-success" id="btn-login">로그인</button>
-        <a class="btn btn-success" href="/user/register">회원가입</a>
+
     </div>
 </main>
 
