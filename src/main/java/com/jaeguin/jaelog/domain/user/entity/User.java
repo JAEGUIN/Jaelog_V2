@@ -1,5 +1,6 @@
 package com.jaeguin.jaelog.domain.user.entity;
 
+import com.jaeguin.jaelog.domain.base.BaseEntity;
 import com.jaeguin.jaelog.domain.user.concat.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "user")
 @Entity
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
