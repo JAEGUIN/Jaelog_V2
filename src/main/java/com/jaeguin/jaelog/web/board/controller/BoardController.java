@@ -3,7 +3,9 @@ package com.jaeguin.jaelog.web.board.controller;
 import com.jaeguin.jaelog.web.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
@@ -12,8 +14,14 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board/list")
-    public String list(){
+    public String list(Model model){
+        model.addAttribute("boardlist", boardService.findAll());
         return "board/listForm";
+    }
+
+    @GetMapping("/board/write")
+    public String write(){
+        return "board/writeForm";
     }
 
 }

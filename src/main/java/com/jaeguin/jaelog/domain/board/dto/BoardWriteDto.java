@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Builder
-public class BoardRegisterDto {
+public class BoardWriteDto {
 
     private String title;
     private String content;
