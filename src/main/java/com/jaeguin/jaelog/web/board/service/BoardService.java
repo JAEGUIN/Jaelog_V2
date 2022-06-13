@@ -5,6 +5,7 @@ import com.jaeguin.jaelog.domain.board.entity.Board;
 import com.jaeguin.jaelog.domain.board.repository.BoardRepository;
 import com.jaeguin.jaelog.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +24,7 @@ public class BoardService {
     }
 
     public List<Board> findAll() {
-        return boardRepository.findAll();
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
 }
