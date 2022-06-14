@@ -32,4 +32,9 @@ public class BoardService {
     public Board detail(Long id) {
         return boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
     }
+
+    @Transactional
+    public void deleteById(Long id) {
+        boardRepository.deleteById(id);
+    }
 }

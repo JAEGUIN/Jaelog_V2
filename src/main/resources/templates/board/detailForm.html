@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head th:replace="layout/header :: head ('글상세')"></head>
 
@@ -11,8 +11,10 @@
   <div>
 
     <div class="form-floating m-3">
+      </br>
       <h3 th:text="${board.title}" style="margin-bottom: 50px;"></h3>
     </div>
+    <div style="display:none" th:text="${board.id}" id="id"></div>
     <div>
       <td th:text="${board.user.nickname}"></td>
       <span> / </span>
@@ -26,6 +28,13 @@
 
 
   </div>
+
+  </br></br></br></br>
+  <div th:if="${#authentication.principal.user.id} == ${board.user.id}">
+    <button class="btn btn-danger" id="btn-delete">삭제</button>
+  </div>
+  </br>
+
 </main>
 
 <footer th:replace="layout/footer :: footer"></footer>

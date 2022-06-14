@@ -5,9 +5,7 @@ import com.jaeguin.jaelog.global.config.security.PrincipalDetail;
 import com.jaeguin.jaelog.web.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -18,5 +16,11 @@ public class BoardApiController {
     @PostMapping("/api/board/write")
     public Long write(@RequestBody BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         return boardService.write(boardWriteDto, principalDetail.getUser());
+    }
+
+    @DeleteMapping("/api/board/delete/{id}")
+    public Long deleteBoard(@PathVariable Long id) {
+        boardService.deleteById(id);
+        return id;
     }
 }
