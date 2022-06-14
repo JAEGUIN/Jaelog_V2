@@ -15,12 +15,3 @@
     color: #15751b;
     text-decoration: underline;
 }
-
-p {
-    word-break: break-all;
-    text-align: left;
-}
-
-h3 {
-    word-break: break-all;
-}
