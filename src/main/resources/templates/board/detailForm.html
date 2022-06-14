@@ -6,30 +6,26 @@
 <body class="text-center d-flex flex-column h-100">
 <header th:replace="layout/header :: header"></header>
 
-<div class="d-flex" style="position: absolute; left: 20px; top: 70px;">
-  <h2 style="margin-right: 10px;">글 번호:</h2>  <h2 th:text="${board.id}" id="id"></h2>
-</div>
-
-<div class="d-flex" style="position: absolute; left: 20px; top: 110px;">
-  <h2 style="margin-right: 10px;">작성자:</h2>  <h2 th:text="${board.user.username}"></h2>
-</div>
 
 <main class="form-signin" style="max-width: 100%;">
   <div class="container border rounded flex-md-row mb-4 shadow-sm h-md-250">
-    <h1 class="h3 m-3 fw-normal">글상세</h1>
-    <hr/>
+
     <div class="form-floating m-3">
       <h3 th:text="${board.title}" style="margin-bottom: 50px;"></h3>
     </div>
+    <div>
+      <td th:text="${board.user.nickname}"></td>
+      <span> / </span>
+      <td class="mb-1 text-muted" style="padding-top: 15px;" th:text="${#temporals.format(board.regTime, 'yyyy-MM-dd hh:mm')}"></td>
+    </div>
+
+    <hr/>
     <div class="form-floating m-3">
       <p th:text="${board.content}"></p>
     </div>
 
 
   </div>
-
-
-  <button class="btn btn-secondary" onclick="history.back()" style="position: absolute; top:556px; left:82px;">뒤로</button>
 </main>
 
 <footer th:replace="layout/footer :: footer"></footer>
