@@ -16,7 +16,7 @@ public class BoardApiController {
     private final BoardService boardService;
 
     @PostMapping("/api/board/write")
-    public Long save(@RequestBody BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+    public Long write(@RequestBody BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         return boardService.write(boardWriteDto, principalDetail.getUser());
     }
 }

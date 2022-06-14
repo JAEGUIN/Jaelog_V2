@@ -23,8 +23,13 @@ public class BoardService {
         return boardRepository.save(boardWriteDto.toEntity()).getId();
     }
 
+    @Transactional(readOnly = true)
     public List<Board> findAll() {
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
+    @Transactional(readOnly = true)
+    public Board detail(Long id) {
+        return boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
+    }
 }

@@ -19,6 +19,12 @@ public class BoardController {
         return "board/listForm";
     }
 
+    @GetMapping("/board/{id}")
+    public String detail(@PathVariable Long id, Model model){
+        model.addAttribute("board", boardService.detail(id));
+        return "board/detailForm";
+    }
+
     @GetMapping("/board/write")
     public String write(){
         return "board/writeForm";
