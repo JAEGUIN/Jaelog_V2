@@ -25,7 +25,7 @@ public class BoardApiController {
         return id;
     }
 
-    @PutMapping("/api/board/update/{id}")
+    @PutMapping("/api/board/{id}/update")
     public Long updateBoard(@PathVariable Long id, @RequestBody BoardUpdateDto boardUpdateDto){
         return boardService.update(id, boardUpdateDto);
     }

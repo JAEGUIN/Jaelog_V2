@@ -49,7 +49,7 @@ let index = {
     },
 
     updateBoard: function () {
-            let id = $("#id").val();
+            let id = $("#id").text();
 
             let data = {
                 title: $("#title").val(),
@@ -58,13 +58,13 @@ let index = {
 
             $.ajax({
                 type: "PUT",
-                url: "/api/board/update/" + id,
+                url: "/api/board/" + id + "/update/",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             }).done(function (res) {
                 alert("글수정이 완료되었습니다.");
-                location.href = "/";
+                location.href = "/board/list";
             }).fail(function (err) {
                 alert(JSON.stringify(err));
             });
