@@ -1,5 +1,6 @@
 package com.jaeguin.jaelog.web.board.service;
 
+import com.jaeguin.jaelog.domain.board.dto.BoardUpdateDto;
 import com.jaeguin.jaelog.domain.board.dto.BoardWriteDto;
 import com.jaeguin.jaelog.domain.board.entity.Board;
 import com.jaeguin.jaelog.domain.board.repository.BoardRepository;
@@ -36,5 +37,12 @@ public class BoardService {
     @Transactional
     public void deleteById(Long id) {
         boardRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Long update(Long id, BoardUpdateDto boardUpdateDto) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
+        board.update(boardUpdateDto.getTitle(), boardUpdateDto.getContent());
+        return id;
     }
 }

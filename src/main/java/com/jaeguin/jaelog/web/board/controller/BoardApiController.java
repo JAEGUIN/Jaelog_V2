@@ -1,5 +1,6 @@
 package com.jaeguin.jaelog.web.board.controller;
 
+import com.jaeguin.jaelog.domain.board.dto.BoardUpdateDto;
 import com.jaeguin.jaelog.domain.board.dto.BoardWriteDto;
 import com.jaeguin.jaelog.global.config.security.PrincipalDetail;
 import com.jaeguin.jaelog.web.board.service.BoardService;
@@ -22,5 +23,10 @@ public class BoardApiController {
     public Long deleteBoard(@PathVariable Long id) {
         boardService.deleteById(id);
         return id;
+    }
+
+    @PutMapping("/api/board/update/{id}")
+    public Long updateBoard(@PathVariable Long id, @RequestBody BoardUpdateDto boardUpdateDto){
+        return boardService.update(id, boardUpdateDto);
     }
 }
