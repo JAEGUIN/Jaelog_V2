@@ -32,6 +32,11 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
+    public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
+        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
+    }
+
+    @Transactional(readOnly = true)
     public Board detail(Long id) {
         return boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
     }
