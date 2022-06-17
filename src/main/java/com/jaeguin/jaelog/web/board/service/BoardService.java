@@ -27,11 +27,6 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Board> findAll(Pageable pageable) {
-        return boardRepository.findAll(pageable);
-    }
-
-    @Transactional(readOnly = true)
     public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
         return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
     }
