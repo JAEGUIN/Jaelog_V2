@@ -15,3 +15,17 @@
     color: #15751b;
     text-decoration: underline;
 }
+
+@media screen and (max-width:550px){
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        width:300px;
+        white-space: normal;
+        overflow: hidden;
+    }
+    img {
+     max-width: 320px;
+    }
+}

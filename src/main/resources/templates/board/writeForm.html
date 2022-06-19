@@ -15,7 +15,7 @@
                 <label for="title">제목</label>
             </div>
             <div class="form-floating m-3">
-                <textarea class="form-control" rows="5" id="content" style="height: 450px;"></textarea>
+                <textarea class="form-control summernote" rows="5" id="content" style="height: 450px;"></textarea>
                 <label for="content">내용</label>
             </div>
 
@@ -24,10 +24,24 @@
             <button type="button" class="btn btn-primary" id="btn-save" style="max-width: 250px;">작성</button>
             <a class="btn btn-danger" href="/board/list">취소</a></br></br>
         </div>
-
-
     </div>
 </main>
+
+<script>
+    $('.summernote').summernote({
+        tabsize: 2,
+        height: 400,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
 
 <footer th:replace="layout/footer :: footer"></footer>
 
@@ -36,6 +50,7 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script th:src="@{/js/board.js}"></script>
 </body>
 
