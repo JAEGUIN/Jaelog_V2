@@ -27,7 +27,7 @@ public class Board extends BaseEntity {
 
     private int count; //조회수
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 
