@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface BoardRepository extends JpaRepository<Board, Long> {
     @Modifying
     @Query(value="UPDATE board SET COUNT = count+1 WHERE id = ?1" , nativeQuery = true)
-    int updateCount(Long id);
+    Integer updateCount(Long id);
 
     Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
 

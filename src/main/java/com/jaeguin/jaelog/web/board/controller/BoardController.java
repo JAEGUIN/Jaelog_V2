@@ -23,8 +23,8 @@ public class BoardController {
     public String list(Model model, @PageableDefault(size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String search) {
         Page<Board> boards = boardService.findByTitleContainingOrContentContaining(search, search, pageable);
-        int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
+        Integer startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
+        Integer endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
         Integer allContents = boardService.getAllContents();
         model.addAttribute("allContents", allContents);
         model.addAttribute("startPage", startPage);
