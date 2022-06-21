@@ -52,4 +52,8 @@ public class BoardService {
     public int updateCount(Long id) {
         return boardRepository.updateCount(id);
     }
+
+    public Integer getAllContents() {
+        return boardRepository.getAllContents();
+    }
 }

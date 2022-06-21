@@ -13,4 +13,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     int updateCount(Long id);
 
     Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
+
+    @Query(value = "SELECT COUNT(*) allContents FROM board ", nativeQuery = true)
+    Integer getAllContents();
 }

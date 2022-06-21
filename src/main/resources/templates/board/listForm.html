@@ -9,8 +9,8 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
+        <h3 class="mb-0 title" align="center" style="padding-bottom: 10px;">총 게시글 수 : <td th:text="${allContents}"></td></h3>
         <div class="p-2"></div>
-
         <div th:each="board : ${boards}" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <a th:href="@{/board/{id}(id=${board.id})}" class="a-title">
