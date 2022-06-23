@@ -30,6 +30,4 @@ public class Reply {
     @JoinColumn(name = "userId")
     private User user;
 
-
-
 }

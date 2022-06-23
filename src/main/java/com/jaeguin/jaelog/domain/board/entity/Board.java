@@ -1,6 +1,7 @@
 package com.jaeguin.jaelog.domain.board.entity;
 
 import com.jaeguin.jaelog.domain.base.BaseEntity;
+import com.jaeguin.jaelog.domain.reply.entity.Reply;
 import com.jaeguin.jaelog.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,6 +32,9 @@ public class Board extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+    private List<Reply> replyList;
 
     public void update(String title, String content) {
         this.title = title;
