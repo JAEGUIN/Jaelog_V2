@@ -34,18 +34,23 @@ let index = {
     },
 
     deleteBoard: function () {
-        let id = $("#id").text();
+        var result = confirm("삭제 하시겠습니까?");
+        if(result == true){
+            let id = $("#id").text();
 
-        $.ajax({
-            type: "DELETE",
-            url: "/api/board/delete/" + id,
-            dataType: "json"
-        }).done(function (res) {
-            alert("글삭제가 완료되었습니다.");
-            location.href = "/board/list";
-        }).fail(function (err) {
-            alert(JSON.stringify(err));
-        });
+            $.ajax({
+                type: "DELETE",
+                url: "/api/board/delete/" + id,
+                dataType: "json"
+            }).done(function (res) {
+                alert("글삭제가 완료되었습니다.");
+                location.href = "/board/list";
+            }).fail(function (err) {
+                alert(JSON.stringify(err));
+            });
+        }else{
+            alert("취소");
+        }
     },
 
     updateBoard: function () {
