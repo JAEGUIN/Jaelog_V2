@@ -1,5 +1,6 @@
 package com.jaeguin.jaelog.domain.reply.entity;
 
+import com.jaeguin.jaelog.domain.base.BaseEntity;
 import com.jaeguin.jaelog.domain.board.entity.Board;
 import com.jaeguin.jaelog.domain.user.entity.User;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter @Builder
 @Entity
-public class Reply {
+public class Reply extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +30,11 @@ public class Reply {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    public void write(String content, Board board, User user) {
+        this.content = content;
+        this.board = board;
+        this.user = user;
+    }
 
 }

@@ -8,11 +8,9 @@ import com.jaeguin.jaelog.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -53,6 +51,7 @@ public class BoardService {
         return boardRepository.updateCount(id);
     }
 
+    @Transactional(readOnly = true)
     public Integer getAllContents() {
         return boardRepository.getAllContents();
     }

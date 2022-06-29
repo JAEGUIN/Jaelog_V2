@@ -1,5 +1,6 @@
 package com.jaeguin.jaelog.domain.board.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jaeguin.jaelog.domain.base.BaseEntity;
 import com.jaeguin.jaelog.domain.reply.entity.Reply;
 import com.jaeguin.jaelog.domain.user.entity.User;
@@ -33,7 +34,9 @@ public class Board extends BaseEntity {
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+    @OrderBy("id desc")                 //Cascade.REMOVE설정의 경우 기존의 자식객체는 DB에서 삭제되지 않는다.
+    @JsonIgnoreProperties({"board"}) //reply안에서 또 호출을 할때 무시해 주는 기능 -> json으로 파싱 NO (무한참조 방지)
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Reply> replyList;
 
     public void update(String title, String content) {
